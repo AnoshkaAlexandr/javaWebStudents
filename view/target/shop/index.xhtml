@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>#{univerBin.time}</title>
+
+</h:head>
+<h:body>
+    <p:panelGrid columns="2" style="background-color: blueviolet">
+        <h:form>
+            <h:outputLabel  value="Label"/>
+            <p:inputText value="#{univerBin.label}"/>
+            <br/>
+            <p:commandButton value="Создать" action="#{univerBin.addUniver}" ajax="false"/>
+            <br/>
+        </h:form>
+        <h:form>
+            <h:outputLabel  value="Surname"/>
+
+            <p:inputText value="#{studentBean.surname}"/>
+            <h:outputLabel  value="Name"/>
+
+            <p:inputText value="#{studentBean.name}"/>
+            <h:outputLabel  value="Age"/>
+
+            <p:inputText value="#{studentBean.age}"/>
+
+
+            <p:outputLabel  value="Lazy:"/>
+            <p:selectOneMenu value="#{studentBean.univer}"  style="width:125px">
+                <f:selectItem itemLabel="Select One" itemValue=""/>
+                <f:selectItems value="#{univerBin.allUnivers}"/>
+            </p:selectOneMenu>
+            <br/>
+            <p:commandButton value="Создать" action="#{studentBean.addStudent}" ajax="false"/>
+
+        </h:form>
+    </p:panelGrid>
+
+    <p:dataTable value="#{studentBean.allStudents}" var="st">
+        <p:column headerText="ID"><h:outputText value="#{st.id}"/></p:column>
+        <p:column headerText="SURNAME"><h:outputText value="#{st.surname}"/></p:column>
+        <p:column headerText="NAME"><h:outputText value="#{st.name}"/></p:column>
+        <p:column headerText="AGE"><h:outputText value="#{st.age}"/></p:column>
+        <p:column headerText="UNIVER"><h:outputText value="#{st.univer}"/></p:column>
+
+    </p:dataTable>
+    <p:dataTable value="#{univerBin.allUnivers}" var="uni">
+        <p:column headerText="ID"><h:outputText value="#{uni.id}"/></p:column>
+        <p:column headerText="LABEL"><h:outputText value="#{uni.label}"/></p:column>
+        <p:column headerText="AVG AGE"><h:outputText value="#{uni.avg_age}"/></p:column>
+
+
+    </p:dataTable>
+</h:body>
+</html>
