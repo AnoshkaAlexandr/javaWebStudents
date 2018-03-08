@@ -12,51 +12,97 @@
 
 </h:head>
 <h:body>
-    <h:panelGrid columns="2" style="background-color: blueviolet">
-        <h:form>
-            <h:outputLabel  value="Label"/>
-            <p:inputText value="#{univerBin.label}"/>
-            <br/>
-            <p:commandButton value="Создать" action="#{univerBin.addUniver}" ajax="false"/>
-            <br/>
-        </h:form>
-        <h:form>
-            <h:outputLabel  value="Surname"/>
-
-            <p:inputText value="#{studentBean.surname}"/>
-            <h:outputLabel  value="Name"/>
-
-            <p:inputText value="#{studentBean.name}"/>
-            <h:outputLabel  value="Age"/>
-
-            <p:inputText value="#{studentBean.age}"/>
+    <p:panel >
+        <div class="ui-g">
+            <div class="ui-g-4 " style="border: 1px solid blue">
 
 
-            <p:outputLabel  value="Lazy:"/>
-            <p:selectOneMenu value="#{studentBean.univer}"  style="width:125px">
-                <f:selectItem itemLabel="Select One" itemValue=""/>
-                <f:selectItems value="#{univerBin.allUnivers}"/>
-            </p:selectOneMenu>
-            <br/>
-            <p:commandButton value="Создать" action="#{studentBean.addStudent}" ajax="false"/>
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="3">
 
-        </h:form>
-    </h:panelGrid>
+                        <h:outputLabel value="Label"/>
+                        <p:inputText value="#{univerBin.label}"/>
 
-    <p:dataTable value="#{studentBean.allStudents}" var="st">
-        <p:column headerText="ID"><h:outputText value="#{st.id}"/></p:column>
-        <p:column headerText="SURNAME"><h:outputText value="#{st.surname}"/></p:column>
-        <p:column headerText="NAME"><h:outputText value="#{st.name}"/></p:column>
-        <p:column headerText="AGE"><h:outputText value="#{st.age}"/></p:column>
-        <p:column headerText="UNIVER"><h:outputText value="#{st.univer}"/></p:column>
+                        <p:commandButton value="Create" action="#{univerBin.addUniver}" ajax="false"/>
 
-    </p:dataTable>
-    <p:dataTable value="#{univerBin.allUnivers}" var="uni">
-        <p:column headerText="ID"><h:outputText value="#{uni.id}"/></p:column>
-        <p:column headerText="LABEL"><h:outputText value="#{uni.label}"/></p:column>
-        <p:column headerText="AVG AGE"><h:outputText value="#{uni.avg_age}"/></p:column>
+                    </h:panelGrid>
 
 
-    </p:dataTable>
+                </h:form>
+            </div>
+
+            <div class="ui-g-8 ui-g-nopad" style="border: 1px solid blue">
+                <h:form>
+
+                    <div class="ui-g-6">
+                        <h:panelGrid columns="2" cellpadding="3">
+
+                            <h:outputLabel value="Surname"/>
+
+                            <p:inputText value="#{studentBean.surname}"/>
+                            <h:outputLabel value="Name"/>
+                            <p:inputText value="#{studentBean.name}"/>
+                        </h:panelGrid>
+                    </div>
+                    <div class="ui-g-6">
+                        <h:panelGrid columns="2" cellpadding="3">
+
+                            <h:outputLabel value="Age"/>
+                            <p:inputText value="#{studentBean.age}"/>
+
+
+                            <p:outputLabel value="Univer"/>
+                            <p:selectOneMenu value="#{studentBean.univer}" style="width:125px">
+                                <f:selectItem itemLabel="Select univer" itemValue=""/>
+                                <f:selectItems value="#{univerBin.allUnivers}"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                    </div>
+                    <div class="ui-g-12">
+                        <h:panelGrid columns="1" cellpadding="3">
+
+                            <p:commandButton value="Create" action="#{studentBean.addStudent}" ajax="false"
+                                             style="display: block;text-align: center"/>
+
+                        </h:panelGrid>
+                    </div>
+
+                </h:form>
+            </div>
+
+
+        </div>
+    </p:panel>
+    <div class="ui-g">
+        <div class="ui-g-4">
+            <p:dataTable value="#{univerBin.allUnivers}" var="uni">
+                <p:column headerText="ID"><h:outputText value="#{uni.id}"/></p:column>
+                <p:column headerText="LABEL"><h:outputText value="#{uni.label}"/></p:column>
+                <p:column headerText="AVG AGE"><h:outputText value="#{uni.avg_age}"/></p:column>
+
+
+            </p:dataTable>
+        </div>
+        <div class="ui-g-8">
+
+
+            <p:dataTable value="#{studentBean.allStudents}" var="st">
+                <p:column headerText="ID"><h:outputText value="#{st.id}"/></p:column>
+                <p:column headerText="SURNAME"><h:outputText value="#{st.surname}"/></p:column>
+                <p:column headerText="NAME"><h:outputText value="#{st.name}"/></p:column>
+                <p:column headerText="AGE"><h:outputText value="#{st.age}"/></p:column>
+                <p:column headerText="UNIVER"><h:outputText value="#{st.univer}"/></p:column>
+
+            </p:dataTable>
+        </div>
+
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <a href="https://github.com/AnoshkaAlexandr/javaWebStudents">Source in GitHub...</a>
+        </div>
+    </div>
+
+
 </h:body>
 </html>
