@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -26,7 +27,7 @@ public class UniverManagerBin {
     }
 
     public List<Univers> getAllUnivers() {
-        Query query = entityManager.createQuery("SELECT univer FROM Univers univer");
+        TypedQuery query = entityManager.createQuery("SELECT univer FROM Univers univer", Univers.class);
         return query.getResultList();
 
 

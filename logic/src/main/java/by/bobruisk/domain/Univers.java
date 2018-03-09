@@ -1,30 +1,38 @@
 package by.bobruisk.domain;
 
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Univers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private long id;
+    private long univerId;
 
     private String label;
 
     private double avg_age;
 
+    @OneToMany(mappedBy="univer")
 
+    private List<Students> listOfStudents;
 
-    public long getId() {
-        return id;
+    public List<Students> getListOfStudents() {
+        return listOfStudents;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setListOfStudents(List<Students> listOfStudents) {
+        this.listOfStudents = listOfStudents;
+    }
+
+    public long getUniverId() {
+        return univerId;
+    }
+
+    public void setUniverId(long id) {
+        this.univerId = id;
     }
 
     public String getLabel() {
@@ -47,4 +55,6 @@ public class Univers {
     public String toString() {
         return "Univer " + label ;
     }
+
+
 }

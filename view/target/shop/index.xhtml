@@ -12,9 +12,9 @@
 
 </h:head>
 <h:body>
-    <p:panel >
+    <p:panel style="background-color: lightblue">
         <div class="ui-g">
-            <div class="ui-g-4 " style="border: 1px solid blue">
+            <div class="ui-g-4 " style="border: 1px solid #faffff; border-radius: 15px">
 
 
                 <h:form>
@@ -31,7 +31,7 @@
                 </h:form>
             </div>
 
-            <div class="ui-g-8 ui-g-nopad" style="border: 1px solid blue">
+            <div class="ui-g-8 ui-g-nopad"  style="border: 1px solid #f9fdff; border-radius: 15px">
                 <h:form>
 
                     <div class="ui-g-6">
@@ -52,9 +52,10 @@
 
 
                             <p:outputLabel value="Univer"/>
-                            <p:selectOneMenu value="#{studentBean.univer}" style="width:125px">
-                                <f:selectItem itemLabel="Select univer" itemValue=""/>
-                                <f:selectItems value="#{univerBin.allUnivers}"/>
+                            <p:selectOneMenu value="#{studentBean.univer}" converter="univerConverter" >
+                                <f:selectItems value="#{univerBin.allUnivers}"  var="univer"
+                                               itemValue="#{univer}"
+                                                itemLabel="#{univer.label}"/>
                             </p:selectOneMenu>
                         </h:panelGrid>
                     </div>
@@ -76,7 +77,7 @@
     <div class="ui-g">
         <div class="ui-g-4">
             <p:dataTable value="#{univerBin.allUnivers}" var="uni">
-                <p:column headerText="ID"><h:outputText value="#{uni.id}"/></p:column>
+                <p:column headerText="ID" style="width: 20px"><h:outputText value="#{uni.univerId}"/></p:column>
                 <p:column headerText="LABEL"><h:outputText value="#{uni.label}"/></p:column>
                 <p:column headerText="AVG AGE"><h:outputText value="#{uni.avg_age}"/></p:column>
 
@@ -87,7 +88,7 @@
 
 
             <p:dataTable value="#{studentBean.allStudents}" var="st">
-                <p:column headerText="ID"><h:outputText value="#{st.id}"/></p:column>
+                <p:column headerText="ID" style="width: 20px"><h:outputText value="#{st.id}"/></p:column>
                 <p:column headerText="SURNAME"><h:outputText value="#{st.surname}"/></p:column>
                 <p:column headerText="NAME"><h:outputText value="#{st.name}"/></p:column>
                 <p:column headerText="AGE"><h:outputText value="#{st.age}"/></p:column>

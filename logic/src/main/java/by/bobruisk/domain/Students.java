@@ -3,14 +3,17 @@ package by.bobruisk.domain;
 import javax.persistence.*;
 
 @Entity
+
 public class Students {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String Surname;
     private String Name;
     private int age;
     @ManyToOne
+
     private Univers univer;
 
     public long getId() {
