@@ -3,16 +3,21 @@ package by.bobruisk;
 import by.bobruisk.domain.Students;
 import by.bobruisk.domain.Univers;
 import by.bobruisk.ejb.StudentManagerBin;
+import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class StudentBean implements Serializable {
+    final static Logger logger = Logger.getLogger(StudentBean.class);
+
 
     @EJB
    private StudentManagerBin studentManagerBin;

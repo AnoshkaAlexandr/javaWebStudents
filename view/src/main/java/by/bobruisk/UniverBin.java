@@ -2,17 +2,20 @@ package by.bobruisk;
 
 import by.bobruisk.domain.Univers;
 import by.bobruisk.ejb.UniverManagerBin;
+import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class UniverBin implements Serializable {
+    final static Logger logger = Logger.getLogger(UniverBin.class);
+
     @EJB
     private UniverManagerBin univerManagerBin;
     private String label;
@@ -35,20 +38,21 @@ public class UniverBin implements Serializable {
         return new Date();
     }
 
-
     public List<Univers> getAllUnivers() {
 
-      univers = univerManagerBin.getAllUnivers();
+        univers = univerManagerBin.getAllUnivers();
         return univers;
     }
 
-    public static  Univers getUniver(long id){
-        for(Univers uni:univers){
-            if(id==uni.getUniverId()){
+    public static Univers getUniver(Integer id) {
+        for (Univers uni : univers) {
+            if (id.equals(uni.getId())) {
+
                 return uni;
             }
         }
         return null;
     }
+
 
 }

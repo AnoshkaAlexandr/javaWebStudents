@@ -5,7 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+>
+
 
 <h:head>
     <title>#{univerBin.time}</title>
@@ -31,7 +33,7 @@
                 </h:form>
             </div>
 
-            <div class="ui-g-8 ui-g-nopad"  style="border: 1px solid #f9fdff; border-radius: 15px">
+            <div class="ui-g-8 ui-g-nopad" style="border: 1px solid #f9fdff; border-radius: 15px">
                 <h:form>
 
                     <div class="ui-g-6">
@@ -52,18 +54,19 @@
 
 
                             <p:outputLabel value="Univer"/>
-                            <p:selectOneMenu value="#{studentBean.univer}" converter="univerConverter" >
-                                <f:selectItems value="#{univerBin.allUnivers}"  var="univer"
-                                               itemValue="#{univer}"
-                                                itemLabel="#{univer.label}"/>
+                            <p:selectOneMenu value="#{studentBean.univer}" converter="univerConverter">
+
+                                <f:selectItems value="#{univerBin.allUnivers}" var="univer"
+
+                                               itemValue="#{univer}" itemLabel="#{univer.label}"/>
                             </p:selectOneMenu>
                         </h:panelGrid>
                     </div>
                     <div class="ui-g-12">
                         <h:panelGrid columns="1" cellpadding="3">
 
-                            <p:commandButton value="Create student" action="#{studentBean.addStudent}"  ajax="false"
-                                             style="display: block;text-align: center"/>
+                            <p:commandButton value="Create student" action="#{studentBean.addStudent}" ajax="false"
+                                             style="display: block;horiz-align: center"/>
 
                         </h:panelGrid>
                     </div>
@@ -77,9 +80,10 @@
     <div class="ui-g">
         <div class="ui-g-4">
             <p:dataTable value="#{univerBin.allUnivers}" var="uni">
-                <p:column headerText="ID" style="width: 20px"><h:outputText value="#{uni.univerId}"/></p:column>
+                <p:column headerText="ID" style="width: 20px"><h:outputText value="#{uni.id}"/></p:column>
                 <p:column headerText="LABEL"><h:outputText value="#{uni.label}"/></p:column>
-                <p:column headerText="AVG AGE"><h:outputText value="#{uni.avg_age}"/></p:column>
+                <p:column headerText="AVG AGE"><h:outputText value="#{uni.avg_age}"> <f:convertNumber pattern="#00.0"/>
+                </h:outputText></p:column>
 
 
             </p:dataTable>

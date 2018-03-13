@@ -3,6 +3,7 @@ package by.bobruisk.domain;
 import javax.persistence.*;
 
 @Entity
+@EntityListeners(UniversListener.class)
 
 public class Students {
     @Id
@@ -12,8 +13,8 @@ public class Students {
     private String Surname;
     private String Name;
     private int age;
-    @ManyToOne
 
+    @ManyToOne(fetch = FetchType.EAGER)
     private Univers univer;
 
     public long getId() {
